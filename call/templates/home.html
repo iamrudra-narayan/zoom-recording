@@ -1,10 +1,27 @@
 {% extends "layout.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
+{% if user.is_authenticated %}
 <div class="d-flex align-items-center flex-row px-3 py-5" style="justify-content:space-evenly;">
     <form method="post">{% csrf_token %}
         <button class="btn btn-outline-primary me-1" type="submit">New Meeting</button>
     </form>
-    <a href="{% url 'recordings' %}"><button class="btn btn-outline-danger me-1" type="submit">My Recording</button></a>
+    <a href="{% url 'recordings' %}"><button class="btn btn-outline-danger me-1" type="submit">Past Meetings</button></a>
+    <a href="https://grain.com/app" target="_blank" class="text-white fw-bold fs-6 text-decoration-none"><button class="btn btn-outline-success" type="submit">Meet Recordings</button></a>
 </div>
+
+<div class="d-flex align-items-center flex-column px-3 py-4" style="justify-content:center;">
+    <h4 class="text-primary">Register or Login for Recording Calls</h4>
+    <p class="text-danger fw-bold" style="font-size:10px;">Ignore this if u already did.</p>
+    <a href="https://grain.com/login" target="_blank" class="text-white fw-bold fs-6 text-decoration-none"><button class="btn btn-outline-success" type="submit">Sign Up / Login</button></a>
+</div>
+{% else %}
+<div class="d-flex align-items-center flex-column mt-5 px-3" style="justify-content:center;">
+    <h4 class="text-primary">Register or Login to Proceed</h3>
+</div>
+<div class="d-flex align-items-center flex-row px-3 py-2" style="justify-content:center;">
+    <a href="{% url 'register' %}" class="text-white fw-bold fs-6 text-decoration-none"><button class="btn btn-primary me-3">Register</button></a>
+    <a href="{% url 'login' %}" class="text-white fw-bold fs-6 text-decoration-none"><button class="btn btn-outline-danger ms-3">Login</button></a>
+</div>
+{% endif %}
 {% endblock %}

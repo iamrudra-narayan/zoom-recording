@@ -4,6 +4,10 @@ from .zoom import createMeeting
 from user.models import RecordedCall
 
 # Create your views here.
+def start(request):
+    return render(request, 'start.html')
+
+
 def home(request):
     if request.method == 'POST':
         if request.user.is_authenticated:
