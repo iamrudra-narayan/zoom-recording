@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block title %}My Profile{% endblock %}
+{% block content %}
+<section>
+    <div class="container">
+        {% if messages %}
+            <div class="d-flex justify-content-center flex-column mt-3">
+              {% for message in messages %}
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                {% endfor %}
+            </div>  
+        {% endif %}
+    </div>
+    <div class="container-fluid py-3 px-3">
+        <div class="container d-flex justify-content-center">
+            <p class="card-text fs-2 fw-bolder py-3">PROFILE</p>
+        </div>
+        <div class="container d-flex justify-content-center mb-4">
+            <img style="height:180px;width:180px;" src="https://cdn-icons-png.flaticon.com/512/1739/1739847.png"><br>
+        </div><br>
+        <div class="container d-flex justify-content-center flex-column">
+        {% if user %}
+        <label class="fw-bold me-4" for="fname">First Name:</label>
+        <input class="form-control me-2 mb-3 app-ip" style="height:33px;width:fit-content;" type="text" value="{{user.first_name}}" disabled>
+        <label class="fw-bold me-4" for="lname">Last Name:</label>
+        <input class="form-control me-2 mb-3 app-ip" style="height:33px;width:fit-content;" type="text" value="{{user.last_name}}" disabled>
+        <label class="fw-bold me-4" for="email">Email:</label>
+        <input class="form-control me-2 mb-3 app-ip" style="height:33px;width:content;" type="text" value="{{user.username}}" disabled>
+        {% endif %}
+        </div>
+        <div class="container d-flex justify-content-center flex-flow-column">
+          <a href="{% url 'logout' %}"><button class="btn btn-outline-light bg-danger text-white fw-bold mt-2" style="height:35px;width:150px;font-size:13px;" type="submit">Logout</button></a>
+        </div>
+    </div>
+</section>
+{% endblock %}

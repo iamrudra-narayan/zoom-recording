@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block title %}Past Recordings{% endblock %}
+{% block style %}
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+
+  td{
+    font-size: 12px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #D6EEEE;
+}
+{% endblock %}
+{% block content %}
+<div class="px-4">
+    <table>
+        <tr>
+        <th>Meeting Id</th>
+        <th>DateTime</th>
+        <th>Duration</th>
+        </tr>
+        {% for data in data %}
+        <tr>
+        <td>{{data.meeting_id}}</td>
+        <td>{{data.date_time}}</td>
+        <td>{{data.duration}} Mins</td>
+        </tr>
+        {% endfor %}
+    </table> 
+</div>    
+{% endblock %}     

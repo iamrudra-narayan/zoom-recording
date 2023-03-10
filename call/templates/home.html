@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="d-flex align-items-center flex-row px-3 py-5" style="justify-content:space-evenly;">
+    <form method="post">{% csrf_token %}
+        <button class="btn btn-outline-primary me-1" type="submit">New Meeting</button>
+    </form>
+    <a href="{% url 'recordings' %}"><button class="btn btn-outline-danger me-1" type="submit">My Recording</button></a>
+</div>
+{% endblock %}
